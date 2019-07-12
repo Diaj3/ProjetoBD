@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ACCOUNT_RECORD">
+    <Key>
+      <PropertyRef Name="Account_record_id" />
+    </Key>
+    <Property Name="NIF" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="Account_record_id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" />
+  </EntityType>
+  <EntityType Name="BARTENDER">
+    <Key>
+      <PropertyRef Name="Bartender_id" />
+    </Key>
+    <Property Name="Bartender_id" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'p6g7.MANAGEMENT.BILL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="Total_pay" />
+    </Key>
+    <Property Name="Total_pay" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BOOKING">
+    <Key>
+      <PropertyRef Name="BookingNum" />
+    </Key>
+    <Property Name="Account_record_id" Type="int" Nullable="false" />
+    <Property Name="BookingNum" Type="int" Nullable="false" />
+    <Property Name="Receptionist_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Checkin_time" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Checkout_time" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CHEF">
+    <Key>
+      <PropertyRef Name="Chef_id" />
+    </Key>
+    <Property Name="Chef_id" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLEANER">
+    <Key>
+      <PropertyRef Name="Cleaner_id" />
+    </Key>
+    <Property Name="Cleaner_id" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="NIF" />
+    </Key>
+    <Property Name="NIF" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="Fname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Lname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PhoneNum" Type="int" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Pass" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'p6g7.MANAGEMENT.DRINK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DRINK">
+    <Key>
+      <PropertyRef Name="Account_record_id" />
+      <PropertyRef Name="Bartender_id" />
+      <PropertyRef Name="Drink_price" />
+      <PropertyRef Name="Drink_name" />
+    </Key>
+    <Property Name="Account_record_id" Type="int" Nullable="false" />
+    <Property Name="Bartender_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Drink_price" Type="int" Nullable="false" />
+    <Property Name="Drink_name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="Staff_id" />
+    </Key>
+    <Property Name="Staff_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="NIF" Type="char" MaxLength="9" Nullable="false" />
+    <Property Name="Fname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Lname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="BirthDate" Type="date" Nullable="false" />
+    <Property Name="PhoneNum" Type="int" />
+    <Property Name="Hotel_id" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'p6g7.MANAGEMENT.HAS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HAS">
+    <Key>
+      <PropertyRef Name="Staff_id" />
+      <PropertyRef Name="Work_shift" />
+    </Key>
+    <Property Name="Staff_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Work_shift" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOTEL">
+    <Key>
+      <PropertyRef Name="Hotel_id" />
+    </Key>
+    <Property Name="Hotel_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Hotel_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PhoneNum" Type="int" Nullable="false" />
+    <Property Name="Postalcode" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'p6g7.MANAGEMENT.IS_ASSIGNED' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="IS_ASSIGNED">
+    <Key>
+      <PropertyRef Name="BookingNum" />
+      <PropertyRef Name="RoomNum" />
+    </Key>
+    <Property Name="BookingNum" Type="int" Nullable="false" />
+    <Property Name="RoomNum" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'p6g7.MANAGEMENT.MEAL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MEAL">
+    <Key>
+      <PropertyRef Name="Account_record_id" />
+      <PropertyRef Name="Chef_id" />
+      <PropertyRef Name="Meal_price" />
+      <PropertyRef Name="Meal_name" />
+    </Key>
+    <Property Name="Account_record_id" Type="int" Nullable="false" />
+    <Property Name="Chef_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Meal_price" Type="int" Nullable="false" />
+    <Property Name="Meal_name" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RECEPTIONIST">
+    <Key>
+      <PropertyRef Name="Receptionist_id" />
+    </Key>
+    <Property Name="Receptionist_id" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="RoomNum" />
+    </Key>
+    <Property Name="RoomNum" Type="int" Nullable="false" />
+    <Property Name="RoomType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Hotel_id" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'p6g7.MANAGEMENT.ROOM_SERVICE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ROOM_SERVICE">
+    <Key>
+      <PropertyRef Name="Cleaner_id" />
+      <PropertyRef Name="RoomNum" />
+    </Key>
+    <Property Name="Cleaner_id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="RoomNum" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROOM_TYPE">
+    <Key>
+      <PropertyRef Name="RoomType" />
+    </Key>
+    <Property Name="RoomType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="RoomPrice" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SCHEDULE">
+    <Key>
+      <PropertyRef Name="Work_shift" />
+    </Key>
+    <Property Name="Work_shift" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <Association Name="c1">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="CLEANER" Type="Self.CLEANER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="CLEANER">
+        <PropertyRef Name="Cleaner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c2">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="RECEPTIONIST" Type="Self.RECEPTIONIST" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="RECEPTIONIST">
+        <PropertyRef Name="Receptionist_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c3">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="CHEF" Type="Self.CHEF" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="CHEF">
+        <PropertyRef Name="Chef_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c4">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="BARTENDER" Type="Self.BARTENDER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="BARTENDER">
+        <PropertyRef Name="Bartender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ACCOUNT_REC__NIF__3EDC53F0">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="ACCOUNT_RECORD" Type="Self.ACCOUNT_RECORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="NIF" />
+      </Principal>
+      <Dependent Role="ACCOUNT_RECORD">
+        <PropertyRef Name="NIF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKING__Recepti__4F12BBB9">
+    <End Role="RECEPTIONIST" Type="Self.RECEPTIONIST" Multiplicity="1" />
+    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECEPTIONIST">
+        <PropertyRef Name="Receptionist_id" />
+      </Principal>
+      <Dependent Role="BOOKING">
+        <PropertyRef Name="Receptionist_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DRINK__Account_r__44952D46">
+    <End Role="ACCOUNT_RECORD" Type="Self.ACCOUNT_RECORD" Multiplicity="1" />
+    <End Role="DRINK" Type="Self.DRINK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT_RECORD">
+        <PropertyRef Name="Account_record_id" />
+      </Principal>
+      <Dependent Role="DRINK">
+        <PropertyRef Name="Account_record_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DRINK__Bartender__43A1090D">
+    <End Role="BARTENDER" Type="Self.BARTENDER" Multiplicity="1" />
+    <End Role="DRINK" Type="Self.DRINK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BARTENDER">
+        <PropertyRef Name="Bartender_id" />
+      </Principal>
+      <Dependent Role="DRINK">
+        <PropertyRef Name="Bartender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EMPLOYEE__Hotel___2DB1C7EE">
+    <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTEL">
+        <PropertyRef Name="Hotel_id" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="Hotel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HAS__Staff_id__54CB950F">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="HAS" Type="Self.HAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="HAS">
+        <PropertyRef Name="Staff_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HAS__Work_shift__55BFB948">
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="1" />
+    <End Role="HAS" Type="Self.HAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SCHEDULE">
+        <PropertyRef Name="Work_shift" />
+      </Principal>
+      <Dependent Role="HAS">
+        <PropertyRef Name="Work_shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IS_ASSIGN__Booki__59904A2C">
+    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="1" />
+    <End Role="IS_ASSIGNED" Type="Self.IS_ASSIGNED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BOOKING">
+        <PropertyRef Name="BookingNum" />
+      </Principal>
+      <Dependent Role="IS_ASSIGNED">
+        <PropertyRef Name="BookingNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__IS_ASSIGN__RoomN__589C25F3">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+    <End Role="IS_ASSIGNED" Type="Self.IS_ASSIGNED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RoomNum" />
+      </Principal>
+      <Dependent Role="IS_ASSIGNED">
+        <PropertyRef Name="RoomNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEAL__Account_re__4A4E069C">
+    <End Role="ACCOUNT_RECORD" Type="Self.ACCOUNT_RECORD" Multiplicity="1" />
+    <End Role="MEAL" Type="Self.MEAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT_RECORD">
+        <PropertyRef Name="Account_record_id" />
+      </Principal>
+      <Dependent Role="MEAL">
+        <PropertyRef Name="Account_record_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEAL__Chef_id__4959E263">
+    <End Role="CHEF" Type="Self.CHEF" Multiplicity="1" />
+    <End Role="MEAL" Type="Self.MEAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHEF">
+        <PropertyRef Name="Chef_id" />
+      </Principal>
+      <Dependent Role="MEAL">
+        <PropertyRef Name="Chef_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROOM__Hotel_id__2704CA5F">
+    <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTEL">
+        <PropertyRef Name="Hotel_id" />
+      </Principal>
+      <Dependent Role="ROOM">
+        <PropertyRef Name="Hotel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROOM__RoomType__27F8EE98">
+    <End Role="ROOM_TYPE" Type="Self.ROOM_TYPE" Multiplicity="1" />
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM_TYPE">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="ROOM">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROOM_SERV__Clean__52E34C9D">
+    <End Role="CLEANER" Type="Self.CLEANER" Multiplicity="1" />
+    <End Role="ROOM_SERVICE" Type="Self.ROOM_SERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLEANER">
+        <PropertyRef Name="Cleaner_id" />
+      </Principal>
+      <Dependent Role="ROOM_SERVICE">
+        <PropertyRef Name="Cleaner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROOM_SERV__RoomN__51EF2864">
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="1" />
+    <End Role="ROOM_SERVICE" Type="Self.ROOM_SERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM">
+        <PropertyRef Name="RoomNum" />
+      </Principal>
+      <Dependent Role="ROOM_SERVICE">
+        <PropertyRef Name="RoomNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="modelsStoreContainer">
+    <EntitySet Name="ACCOUNT_RECORD" EntityType="Self.ACCOUNT_RECORD" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="BARTENDER" EntityType="Self.BARTENDER" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="BOOKING" EntityType="Self.BOOKING" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="CHEF" EntityType="Self.CHEF" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="CLEANER" EntityType="Self.CLEANER" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="HOTEL" EntityType="Self.HOTEL" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="RECEPTIONIST" EntityType="Self.RECEPTIONIST" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="ROOM" EntityType="Self.ROOM" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="ROOM_TYPE" EntityType="Self.ROOM_TYPE" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" Schema="MANAGEMENT" store:Type="Tables" />
+    <EntitySet Name="BILL" EntityType="Self.BILL" store:Type="Tables" store:Schema="MANAGEMENT">
+      <DefiningQuery>SELECT 
+    [BILL].[Total_pay] AS [Total_pay]
+    FROM [MANAGEMENT].[BILL] AS [BILL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DRINK" EntityType="Self.DRINK" store:Type="Tables" store:Schema="MANAGEMENT">
+      <DefiningQuery>SELECT 
+    [DRINK].[Account_record_id] AS [Account_record_id], 
+    [DRINK].[Bartender_id] AS [Bartender_id], 
+    [DRINK].[Drink_price] AS [Drink_price], 
+    [DRINK].[Drink_name] AS [Drink_name]
+    FROM [MANAGEMENT].[DRINK] AS [DRINK]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HAS" EntityType="Self.HAS" store:Type="Tables" store:Schema="MANAGEMENT">
+      <DefiningQuery>SELECT 
+    [HAS].[Staff_id] AS [Staff_id], 
+    [HAS].[Work_shift] AS [Work_shift]
+    FROM [MANAGEMENT].[HAS] AS [HAS]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="IS_ASSIGNED" EntityType="Self.IS_ASSIGNED" store:Type="Tables" store:Schema="MANAGEMENT">
+      <DefiningQuery>SELECT 
+    [IS_ASSIGNED].[BookingNum] AS [BookingNum], 
+    [IS_ASSIGNED].[RoomNum] AS [RoomNum]
+    FROM [MANAGEMENT].[IS_ASSIGNED] AS [IS_ASSIGNED]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MEAL" EntityType="Self.MEAL" store:Type="Tables" store:Schema="MANAGEMENT">
+      <DefiningQuery>SELECT 
+    [MEAL].[Account_record_id] AS [Account_record_id], 
+    [MEAL].[Chef_id] AS [Chef_id], 
+    [MEAL].[Meal_price] AS [Meal_price], 
+    [MEAL].[Meal_name] AS [Meal_name]
+    FROM [MANAGEMENT].[MEAL] AS [MEAL]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ROOM_SERVICE" EntityType="Self.ROOM_SERVICE" store:Type="Tables" store:Schema="MANAGEMENT">
+      <DefiningQuery>SELECT 
+    [ROOM_SERVICE].[Cleaner_id] AS [Cleaner_id], 
+    [ROOM_SERVICE].[RoomNum] AS [RoomNum]
+    FROM [MANAGEMENT].[ROOM_SERVICE] AS [ROOM_SERVICE]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="c1" Association="Self.c1">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="CLEANER" EntitySet="CLEANER" />
+    </AssociationSet>
+    <AssociationSet Name="c2" Association="Self.c2">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="RECEPTIONIST" EntitySet="RECEPTIONIST" />
+    </AssociationSet>
+    <AssociationSet Name="c3" Association="Self.c3">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="CHEF" EntitySet="CHEF" />
+    </AssociationSet>
+    <AssociationSet Name="c4" Association="Self.c4">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="BARTENDER" EntitySet="BARTENDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ACCOUNT_REC__NIF__3EDC53F0" Association="Self.FK__ACCOUNT_REC__NIF__3EDC53F0">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="ACCOUNT_RECORD" EntitySet="ACCOUNT_RECORD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKING__Recepti__4F12BBB9" Association="Self.FK__BOOKING__Recepti__4F12BBB9">
+      <End Role="RECEPTIONIST" EntitySet="RECEPTIONIST" />
+      <End Role="BOOKING" EntitySet="BOOKING" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DRINK__Account_r__44952D46" Association="Self.FK__DRINK__Account_r__44952D46">
+      <End Role="ACCOUNT_RECORD" EntitySet="ACCOUNT_RECORD" />
+      <End Role="DRINK" EntitySet="DRINK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DRINK__Bartender__43A1090D" Association="Self.FK__DRINK__Bartender__43A1090D">
+      <End Role="BARTENDER" EntitySet="BARTENDER" />
+      <End Role="DRINK" EntitySet="DRINK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EMPLOYEE__Hotel___2DB1C7EE" Association="Self.FK__EMPLOYEE__Hotel___2DB1C7EE">
+      <End Role="HOTEL" EntitySet="HOTEL" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HAS__Staff_id__54CB950F" Association="Self.FK__HAS__Staff_id__54CB950F">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="HAS" EntitySet="HAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HAS__Work_shift__55BFB948" Association="Self.FK__HAS__Work_shift__55BFB948">
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+      <End Role="HAS" EntitySet="HAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IS_ASSIGN__Booki__59904A2C" Association="Self.FK__IS_ASSIGN__Booki__59904A2C">
+      <End Role="BOOKING" EntitySet="BOOKING" />
+      <End Role="IS_ASSIGNED" EntitySet="IS_ASSIGNED" />
+    </AssociationSet>
+    <AssociationSet Name="FK__IS_ASSIGN__RoomN__589C25F3" Association="Self.FK__IS_ASSIGN__RoomN__589C25F3">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="IS_ASSIGNED" EntitySet="IS_ASSIGNED" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEAL__Account_re__4A4E069C" Association="Self.FK__MEAL__Account_re__4A4E069C">
+      <End Role="ACCOUNT_RECORD" EntitySet="ACCOUNT_RECORD" />
+      <End Role="MEAL" EntitySet="MEAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEAL__Chef_id__4959E263" Association="Self.FK__MEAL__Chef_id__4959E263">
+      <End Role="CHEF" EntitySet="CHEF" />
+      <End Role="MEAL" EntitySet="MEAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROOM__Hotel_id__2704CA5F" Association="Self.FK__ROOM__Hotel_id__2704CA5F">
+      <End Role="HOTEL" EntitySet="HOTEL" />
+      <End Role="ROOM" EntitySet="ROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROOM__RoomType__27F8EE98" Association="Self.FK__ROOM__RoomType__27F8EE98">
+      <End Role="ROOM_TYPE" EntitySet="ROOM_TYPE" />
+      <End Role="ROOM" EntitySet="ROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROOM_SERV__Clean__52E34C9D" Association="Self.FK__ROOM_SERV__Clean__52E34C9D">
+      <End Role="CLEANER" EntitySet="CLEANER" />
+      <End Role="ROOM_SERVICE" EntitySet="ROOM_SERVICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROOM_SERV__RoomN__51EF2864" Association="Self.FK__ROOM_SERV__RoomN__51EF2864">
+      <End Role="ROOM" EntitySet="ROOM" />
+      <End Role="ROOM_SERVICE" EntitySet="ROOM_SERVICE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

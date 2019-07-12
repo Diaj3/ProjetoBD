@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="modelsStoreContainer" CdmEntityContainer="p6g7Entities">
+    <EntitySetMapping Name="ACCOUNT_RECORD">
+      <EntityTypeMapping TypeName="models.ACCOUNT_RECORD">
+        <MappingFragment StoreEntitySet="ACCOUNT_RECORD">
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Account_record_id" ColumnName="Account_record_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BARTENDER">
+      <EntityTypeMapping TypeName="models.BARTENDER">
+        <MappingFragment StoreEntitySet="BARTENDER">
+          <ScalarProperty Name="Bartender_id" ColumnName="Bartender_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BOOKING">
+      <EntityTypeMapping TypeName="models.BOOKING">
+        <MappingFragment StoreEntitySet="BOOKING">
+          <ScalarProperty Name="Account_record_id" ColumnName="Account_record_id" />
+          <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+          <ScalarProperty Name="Receptionist_id" ColumnName="Receptionist_id" />
+          <ScalarProperty Name="Checkin_time" ColumnName="Checkin_time" />
+          <ScalarProperty Name="Checkout_time" ColumnName="Checkout_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHEF">
+      <EntityTypeMapping TypeName="models.CHEF">
+        <MappingFragment StoreEntitySet="CHEF">
+          <ScalarProperty Name="Chef_id" ColumnName="Chef_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLEANER">
+      <EntityTypeMapping TypeName="models.CLEANER">
+        <MappingFragment StoreEntitySet="CLEANER">
+          <ScalarProperty Name="Cleaner_id" ColumnName="Cleaner_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER">
+      <EntityTypeMapping TypeName="models.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEE">
+      <EntityTypeMapping TypeName="models.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="Staff_id" ColumnName="Staff_id" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="NIF" ColumnName="NIF" />
+          <ScalarProperty Name="Fname" ColumnName="Fname" />
+          <ScalarProperty Name="Lname" ColumnName="Lname" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="Hotel_id" ColumnName="Hotel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOTEL">
+      <EntityTypeMapping TypeName="models.HOTEL">
+        <MappingFragment StoreEntitySet="HOTEL">
+          <ScalarProperty Name="Hotel_id" ColumnName="Hotel_id" />
+          <ScalarProperty Name="Hotel_name" ColumnName="Hotel_name" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="Postalcode" ColumnName="Postalcode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RECEPTIONIST">
+      <EntityTypeMapping TypeName="models.RECEPTIONIST">
+        <MappingFragment StoreEntitySet="RECEPTIONIST">
+          <ScalarProperty Name="Receptionist_id" ColumnName="Receptionist_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOM">
+      <EntityTypeMapping TypeName="models.ROOM">
+        <MappingFragment StoreEntitySet="ROOM">
+          <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="Hotel_id" ColumnName="Hotel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROOM_TYPE">
+      <EntityTypeMapping TypeName="models.ROOM_TYPE">
+        <MappingFragment StoreEntitySet="ROOM_TYPE">
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="RoomPrice" ColumnName="RoomPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCHEDULE">
+      <EntityTypeMapping TypeName="models.SCHEDULE">
+        <MappingFragment StoreEntitySet="SCHEDULE">
+          <ScalarProperty Name="Work_shift" ColumnName="Work_shift" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BILL">
+      <EntityTypeMapping TypeName="models.BILL">
+        <MappingFragment StoreEntitySet="BILL">
+          <ScalarProperty Name="Total_pay" ColumnName="Total_pay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DRINK">
+      <EntityTypeMapping TypeName="models.DRINK">
+        <MappingFragment StoreEntitySet="DRINK">
+          <ScalarProperty Name="Account_record_id" ColumnName="Account_record_id" />
+          <ScalarProperty Name="Bartender_id" ColumnName="Bartender_id" />
+          <ScalarProperty Name="Drink_price" ColumnName="Drink_price" />
+          <ScalarProperty Name="Drink_name" ColumnName="Drink_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEAL">
+      <EntityTypeMapping TypeName="models.MEAL">
+        <MappingFragment StoreEntitySet="MEAL">
+          <ScalarProperty Name="Account_record_id" ColumnName="Account_record_id" />
+          <ScalarProperty Name="Chef_id" ColumnName="Chef_id" />
+          <ScalarProperty Name="Meal_price" ColumnName="Meal_price" />
+          <ScalarProperty Name="Meal_name" ColumnName="Meal_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="HAS" TypeName="models.HAS" StoreEntitySet="HAS">
+      <EndProperty Name="EMPLOYEE">
+        <ScalarProperty Name="Staff_id" ColumnName="Staff_id" />
+      </EndProperty>
+      <EndProperty Name="SCHEDULE">
+        <ScalarProperty Name="Work_shift" ColumnName="Work_shift" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="IS_ASSIGNED" TypeName="models.IS_ASSIGNED" StoreEntitySet="IS_ASSIGNED">
+      <EndProperty Name="BOOKING">
+        <ScalarProperty Name="BookingNum" ColumnName="BookingNum" />
+      </EndProperty>
+      <EndProperty Name="ROOM">
+        <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ROOM_SERVICE" TypeName="models.ROOM_SERVICE" StoreEntitySet="ROOM_SERVICE">
+      <EndProperty Name="CLEANER">
+        <ScalarProperty Name="Cleaner_id" ColumnName="Cleaner_id" />
+      </EndProperty>
+      <EndProperty Name="ROOM">
+        <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

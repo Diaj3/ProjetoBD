@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACCOUNT_RECORD">
+    <Key>
+      <PropertyRef Name="Account_record_id" />
+    </Key>
+    <Property Name="NIF" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Account_record_id" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__ACCOUNT_REC__NIF__3EDC53F0" FromRole="ACCOUNT_RECORD" ToRole="CUSTOMER" />
+    <NavigationProperty Name="DRINK" Relationship="Self.FK__DRINK__Account_r__44952D46" FromRole="ACCOUNT_RECORD" ToRole="DRINK" />
+    <NavigationProperty Name="MEAL" Relationship="Self.FK__MEAL__Account_re__4A4E069C" FromRole="ACCOUNT_RECORD" ToRole="MEAL" />
+  </EntityType>
+  <EntityType Name="BARTENDER">
+    <Key>
+      <PropertyRef Name="Bartender_id" />
+    </Key>
+    <Property Name="Bartender_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.c4" FromRole="BARTENDER" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="DRINK" Relationship="Self.FK__DRINK__Bartender__43A1090D" FromRole="BARTENDER" ToRole="DRINK" />
+  </EntityType>
+  <EntityType Name="BOOKING">
+    <Key>
+      <PropertyRef Name="BookingNum" />
+    </Key>
+    <Property Name="Account_record_id" Type="Int32" Nullable="false" />
+    <Property Name="BookingNum" Type="Int32" Nullable="false" />
+    <Property Name="Receptionist_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Checkin_time" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Checkout_time" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="RECEPTIONIST" Relationship="Self.FK__BOOKING__Recepti__4F12BBB9" FromRole="BOOKING" ToRole="RECEPTIONIST" />
+    <NavigationProperty Name="ROOM" Relationship="Self.IS_ASSIGNED" FromRole="BOOKING" ToRole="ROOM" />
+  </EntityType>
+  <EntityType Name="CHEF">
+    <Key>
+      <PropertyRef Name="Chef_id" />
+    </Key>
+    <Property Name="Chef_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.c3" FromRole="CHEF" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="MEAL" Relationship="Self.FK__MEAL__Chef_id__4959E263" FromRole="CHEF" ToRole="MEAL" />
+  </EntityType>
+  <EntityType Name="CLEANER">
+    <Key>
+      <PropertyRef Name="Cleaner_id" />
+    </Key>
+    <Property Name="Cleaner_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.c1" FromRole="CLEANER" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="ROOM" Relationship="Self.ROOM_SERVICE" FromRole="CLEANER" ToRole="ROOM" />
+  </EntityType>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="NIF" />
+    </Key>
+    <Property Name="NIF" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNum" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ACCOUNT_RECORD" Relationship="Self.FK__ACCOUNT_REC__NIF__3EDC53F0" FromRole="CUSTOMER" ToRole="ACCOUNT_RECORD" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="Staff_id" />
+    </Key>
+    <Property Name="Staff_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NIF" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PhoneNum" Type="Int32" />
+    <Property Name="Hotel_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BARTENDER" Relationship="Self.c4" FromRole="EMPLOYEE" ToRole="BARTENDER" />
+    <NavigationProperty Name="CHEF" Relationship="Self.c3" FromRole="EMPLOYEE" ToRole="CHEF" />
+    <NavigationProperty Name="CLEANER" Relationship="Self.c1" FromRole="EMPLOYEE" ToRole="CLEANER" />
+    <NavigationProperty Name="RECEPTIONIST" Relationship="Self.c2" FromRole="EMPLOYEE" ToRole="RECEPTIONIST" />
+    <NavigationProperty Name="HOTEL" Relationship="Self.FK__EMPLOYEE__Hotel___2DB1C7EE" FromRole="EMPLOYEE" ToRole="HOTEL" />
+    <NavigationProperty Name="SCHEDULE" Relationship="Self.HAS" FromRole="EMPLOYEE" ToRole="SCHEDULE" />
+  </EntityType>
+  <EntityType Name="HOTEL">
+    <Key>
+      <PropertyRef Name="Hotel_id" />
+    </Key>
+    <Property Name="Hotel_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Hotel_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNum" Type="Int32" Nullable="false" />
+    <Property Name="Postalcode" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK__EMPLOYEE__Hotel___2DB1C7EE" FromRole="HOTEL" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="ROOM" Relationship="Self.FK__ROOM__Hotel_id__2704CA5F" FromRole="HOTEL" ToRole="ROOM" />
+  </EntityType>
+  <EntityType Name="RECEPTIONIST">
+    <Key>
+      <PropertyRef Name="Receptionist_id" />
+    </Key>
+    <Property Name="Receptionist_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="BOOKING" Relationship="Self.FK__BOOKING__Recepti__4F12BBB9" FromRole="RECEPTIONIST" ToRole="BOOKING" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.c2" FromRole="RECEPTIONIST" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="ROOM">
+    <Key>
+      <PropertyRef Name="RoomNum" />
+    </Key>
+    <Property Name="RoomNum" Type="Int32" Nullable="false" />
+    <Property Name="RoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Hotel_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HOTEL" Relationship="Self.FK__ROOM__Hotel_id__2704CA5F" FromRole="ROOM" ToRole="HOTEL" />
+    <NavigationProperty Name="ROOM_TYPE" Relationship="Self.FK__ROOM__RoomType__27F8EE98" FromRole="ROOM" ToRole="ROOM_TYPE" />
+    <NavigationProperty Name="BOOKING" Relationship="Self.IS_ASSIGNED" FromRole="ROOM" ToRole="BOOKING" />
+    <NavigationProperty Name="CLEANER" Relationship="Self.ROOM_SERVICE" FromRole="ROOM" ToRole="CLEANER" />
+  </EntityType>
+  <EntityType Name="ROOM_TYPE">
+    <Key>
+      <PropertyRef Name="RoomType" />
+    </Key>
+    <Property Name="RoomType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoomPrice" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ROOM" Relationship="Self.FK__ROOM__RoomType__27F8EE98" FromRole="ROOM_TYPE" ToRole="ROOM" />
+  </EntityType>
+  <EntityType Name="SCHEDULE">
+    <Key>
+      <PropertyRef Name="Work_shift" />
+    </Key>
+    <Property Name="Work_shift" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="Self.HAS" FromRole="SCHEDULE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="BILL">
+    <Key>
+      <PropertyRef Name="Total_pay" />
+    </Key>
+    <Property Name="Total_pay" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DRINK">
+    <Key>
+      <PropertyRef Name="Account_record_id" />
+      <PropertyRef Name="Bartender_id" />
+      <PropertyRef Name="Drink_price" />
+      <PropertyRef Name="Drink_name" />
+    </Key>
+    <Property Name="Account_record_id" Type="Int32" Nullable="false" />
+    <Property Name="Bartender_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Drink_price" Type="Int32" Nullable="false" />
+    <Property Name="Drink_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ACCOUNT_RECORD" Relationship="Self.FK__DRINK__Account_r__44952D46" FromRole="DRINK" ToRole="ACCOUNT_RECORD" />
+    <NavigationProperty Name="BARTENDER" Relationship="Self.FK__DRINK__Bartender__43A1090D" FromRole="DRINK" ToRole="BARTENDER" />
+  </EntityType>
+  <EntityType Name="MEAL">
+    <Key>
+      <PropertyRef Name="Account_record_id" />
+      <PropertyRef Name="Chef_id" />
+      <PropertyRef Name="Meal_price" />
+      <PropertyRef Name="Meal_name" />
+    </Key>
+    <Property Name="Account_record_id" Type="Int32" Nullable="false" />
+    <Property Name="Chef_id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Meal_price" Type="Int32" Nullable="false" />
+    <Property Name="Meal_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ACCOUNT_RECORD" Relationship="Self.FK__MEAL__Account_re__4A4E069C" FromRole="MEAL" ToRole="ACCOUNT_RECORD" />
+    <NavigationProperty Name="CHEF" Relationship="Self.FK__MEAL__Chef_id__4959E263" FromRole="MEAL" ToRole="CHEF" />
+  </EntityType>
+  <Association Name="FK__ACCOUNT_REC__NIF__3EDC53F0">
+    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+    <End Role="ACCOUNT_RECORD" Type="Self.ACCOUNT_RECORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CUSTOMER">
+        <PropertyRef Name="NIF" />
+      </Principal>
+      <Dependent Role="ACCOUNT_RECORD">
+        <PropertyRef Name="NIF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DRINK__Account_r__44952D46">
+    <End Role="ACCOUNT_RECORD" Type="Self.ACCOUNT_RECORD" Multiplicity="1" />
+    <End Role="DRINK" Type="Self.DRINK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT_RECORD">
+        <PropertyRef Name="Account_record_id" />
+      </Principal>
+      <Dependent Role="DRINK">
+        <PropertyRef Name="Account_record_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEAL__Account_re__4A4E069C">
+    <End Role="ACCOUNT_RECORD" Type="Self.ACCOUNT_RECORD" Multiplicity="1" />
+    <End Role="MEAL" Type="Self.MEAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ACCOUNT_RECORD">
+        <PropertyRef Name="Account_record_id" />
+      </Principal>
+      <Dependent Role="MEAL">
+        <PropertyRef Name="Account_record_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c4">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="BARTENDER" Type="Self.BARTENDER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="BARTENDER">
+        <PropertyRef Name="Bartender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DRINK__Bartender__43A1090D">
+    <End Role="BARTENDER" Type="Self.BARTENDER" Multiplicity="1" />
+    <End Role="DRINK" Type="Self.DRINK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BARTENDER">
+        <PropertyRef Name="Bartender_id" />
+      </Principal>
+      <Dependent Role="DRINK">
+        <PropertyRef Name="Bartender_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BOOKING__Recepti__4F12BBB9">
+    <End Role="RECEPTIONIST" Type="Self.RECEPTIONIST" Multiplicity="1" />
+    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECEPTIONIST">
+        <PropertyRef Name="Receptionist_id" />
+      </Principal>
+      <Dependent Role="BOOKING">
+        <PropertyRef Name="Receptionist_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c3">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="CHEF" Type="Self.CHEF" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="CHEF">
+        <PropertyRef Name="Chef_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MEAL__Chef_id__4959E263">
+    <End Role="CHEF" Type="Self.CHEF" Multiplicity="1" />
+    <End Role="MEAL" Type="Self.MEAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHEF">
+        <PropertyRef Name="Chef_id" />
+      </Principal>
+      <Dependent Role="MEAL">
+        <PropertyRef Name="Chef_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c1">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="CLEANER" Type="Self.CLEANER" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="CLEANER">
+        <PropertyRef Name="Cleaner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="c2">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+    <End Role="RECEPTIONIST" Type="Self.RECEPTIONIST" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="RECEPTIONIST">
+        <PropertyRef Name="Receptionist_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EMPLOYEE__Hotel___2DB1C7EE">
+    <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTEL">
+        <PropertyRef Name="Hotel_id" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="Hotel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROOM__Hotel_id__2704CA5F">
+    <End Role="HOTEL" Type="Self.HOTEL" Multiplicity="1" />
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOTEL">
+        <PropertyRef Name="Hotel_id" />
+      </Principal>
+      <Dependent Role="ROOM">
+        <PropertyRef Name="Hotel_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ROOM__RoomType__27F8EE98">
+    <End Role="ROOM_TYPE" Type="Self.ROOM_TYPE" Multiplicity="1" />
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROOM_TYPE">
+        <PropertyRef Name="RoomType" />
+      </Principal>
+      <Dependent Role="ROOM">
+        <PropertyRef Name="RoomType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HAS">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <End Role="SCHEDULE" Type="Self.SCHEDULE" Multiplicity="*" />
+  </Association>
+  <Association Name="IS_ASSIGNED">
+    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="*" />
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+  </Association>
+  <Association Name="ROOM_SERVICE">
+    <End Role="CLEANER" Type="Self.CLEANER" Multiplicity="*" />
+    <End Role="ROOM" Type="Self.ROOM" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="p6g7Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACCOUNT_RECORD" EntityType="Self.ACCOUNT_RECORD" />
+    <EntitySet Name="BARTENDER" EntityType="Self.BARTENDER" />
+    <EntitySet Name="BOOKING" EntityType="Self.BOOKING" />
+    <EntitySet Name="CHEF" EntityType="Self.CHEF" />
+    <EntitySet Name="CLEANER" EntityType="Self.CLEANER" />
+    <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" />
+    <EntitySet Name="HOTEL" EntityType="Self.HOTEL" />
+    <EntitySet Name="RECEPTIONIST" EntityType="Self.RECEPTIONIST" />
+    <EntitySet Name="ROOM" EntityType="Self.ROOM" />
+    <EntitySet Name="ROOM_TYPE" EntityType="Self.ROOM_TYPE" />
+    <EntitySet Name="SCHEDULE" EntityType="Self.SCHEDULE" />
+    <EntitySet Name="BILL" EntityType="Self.BILL" />
+    <EntitySet Name="DRINK" EntityType="Self.DRINK" />
+    <EntitySet Name="MEAL" EntityType="Self.MEAL" />
+    <AssociationSet Name="FK__ACCOUNT_REC__NIF__3EDC53F0" Association="Self.FK__ACCOUNT_REC__NIF__3EDC53F0">
+      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+      <End Role="ACCOUNT_RECORD" EntitySet="ACCOUNT_RECORD" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DRINK__Account_r__44952D46" Association="Self.FK__DRINK__Account_r__44952D46">
+      <End Role="ACCOUNT_RECORD" EntitySet="ACCOUNT_RECORD" />
+      <End Role="DRINK" EntitySet="DRINK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEAL__Account_re__4A4E069C" Association="Self.FK__MEAL__Account_re__4A4E069C">
+      <End Role="ACCOUNT_RECORD" EntitySet="ACCOUNT_RECORD" />
+      <End Role="MEAL" EntitySet="MEAL" />
+    </AssociationSet>
+    <AssociationSet Name="c4" Association="Self.c4">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="BARTENDER" EntitySet="BARTENDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DRINK__Bartender__43A1090D" Association="Self.FK__DRINK__Bartender__43A1090D">
+      <End Role="BARTENDER" EntitySet="BARTENDER" />
+      <End Role="DRINK" EntitySet="DRINK" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BOOKING__Recepti__4F12BBB9" Association="Self.FK__BOOKING__Recepti__4F12BBB9">
+      <End Role="RECEPTIONIST" EntitySet="RECEPTIONIST" />
+      <End Role="BOOKING" EntitySet="BOOKING" />
+    </AssociationSet>
+    <AssociationSet Name="c3" Association="Self.c3">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="CHEF" EntitySet="CHEF" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MEAL__Chef_id__4959E263" Association="Self.FK__MEAL__Chef_id__4959E263">
+      <End Role="CHEF" EntitySet="CHEF" />
+      <End Role="MEAL" EntitySet="MEAL" />
+    </AssociationSet>
+    <AssociationSet Name="c1" Association="Self.c1">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="CLEANER" EntitySet="CLEANER" />
+    </AssociationSet>
+    <AssociationSet Name="c2" Association="Self.c2">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="RECEPTIONIST" EntitySet="RECEPTIONIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EMPLOYEE__Hotel___2DB1C7EE" Association="Self.FK__EMPLOYEE__Hotel___2DB1C7EE">
+      <End Role="HOTEL" EntitySet="HOTEL" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROOM__Hotel_id__2704CA5F" Association="Self.FK__ROOM__Hotel_id__2704CA5F">
+      <End Role="HOTEL" EntitySet="HOTEL" />
+      <End Role="ROOM" EntitySet="ROOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ROOM__RoomType__27F8EE98" Association="Self.FK__ROOM__RoomType__27F8EE98">
+      <End Role="ROOM_TYPE" EntitySet="ROOM_TYPE" />
+      <End Role="ROOM" EntitySet="ROOM" />
+    </AssociationSet>
+    <AssociationSet Name="HAS" Association="Self.HAS">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="SCHEDULE" EntitySet="SCHEDULE" />
+    </AssociationSet>
+    <AssociationSet Name="IS_ASSIGNED" Association="Self.IS_ASSIGNED">
+      <End Role="BOOKING" EntitySet="BOOKING" />
+      <End Role="ROOM" EntitySet="ROOM" />
+    </AssociationSet>
+    <AssociationSet Name="ROOM_SERVICE" Association="Self.ROOM_SERVICE">
+      <End Role="CLEANER" EntitySet="CLEANER" />
+      <End Role="ROOM" EntitySet="ROOM" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD2C209A-1A5F-4B12-BFEA-17EE7973B2CF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>WindowsApp1.My.MyApplication</StartupObject>
+    <RootNamespace>WindowsApp1</RootNamespace>
+    <AssemblyName>WindowsApp1</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WindowsApp1.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WindowsApp1.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustLogged.Designer.vb">
+      <DependentUpon>CustLogged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustLogged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CleanerWindow.Designer.vb">
+      <DependentUpon>CleanerWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CleanerWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustRegister.Designer.vb">
+      <DependentUpon>CustRegister.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustRegister.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employeef.Designer.vb">
+      <DependentUpon>Employeef.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Employeef.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainPage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainPage.Designer.vb">
+      <DependentUpon>MainPage.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManLogged.Designer.vb">
+      <DependentUpon>ManLogged.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ManLogged.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Managerf.Designer.vb">
+      <DependentUpon>Managerf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Managerf.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customerf.Designer.vb">
+      <DependentUpon>Customerf.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Customerf.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\Bartender.vb" />
+    <Compile Include="Models\Chef.vb" />
+    <Compile Include="Models\Customer.vb" />
+    <Compile Include="Models\Drink.vb" />
+    <Compile Include="Models\Gasto.vb" />
+    <Compile Include="Models\LoggedCustomer.vb" />
+    <Compile Include="Models\Meal.vb" />
+    <Compile Include="Models\Cleaner.vb" />
+    <Compile Include="Models\Employee.vb" />
+    <Compile Include="Models\LoggedEmployee.vb" />
+    <Compile Include="Models\LoggedManager.vb" />
+    <Compile Include="Models\Receptionist.vb" />
+    <Compile Include="Models\Room.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="UI\ManagerWindow.Designer.vb">
+      <DependentUpon>ManagerWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ManagerWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustLogged.resx">
+      <DependentUpon>CustLogged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CleanerWindow.resx">
+      <DependentUpon>CleanerWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustRegister.resx">
+      <DependentUpon>CustRegister.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employeef.resx">
+      <DependentUpon>Employeef.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPage.resx">
+      <DependentUpon>MainPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManLogged.resx">
+      <DependentUpon>ManLogged.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Managerf.resx">
+      <DependentUpon>Managerf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customerf.resx">
+      <DependentUpon>Customerf.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ManagerWindow.resx">
+      <DependentUpon>ManagerWindow.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
