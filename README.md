@@ -19,7 +19,7 @@ A base de dados já tem alguns exemplos inseridos para o uso da aplicação. Ex:
 * (Chef) id: 1142298274f
 * (Bartender) id: 2910761690
 * (Receptionist) id: 7993251489
-* Manager: id: 8695647822
+* Manager: id: 8695647822 / password: password
 
 # O que gostaria de implementar
 
