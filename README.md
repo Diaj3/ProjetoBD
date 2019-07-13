@@ -14,10 +14,11 @@ Base de Dados e interface de uma aplicação de gerência de um Hotel, permite o
 Após o programa estar a correr, três opções vão aparecer no menu, Customer, Employee e Manager.
 A base de dados já tem alguns exemplos inseridos para o uso da aplicação. Ex:
 * Customer: nif: 390443066 / password: 35051132
-* Employee: id: 5378235358 //Cleaner
-            id: 1142298274 //Chef
-            id: 2910761690 //Bartender
-            id: 7993251489 //Receptionist
+* Employee: 
+id: 5378235358 //Cleaner
+id: 1142298274 //Chef
+id: 2910761690 //Bartender
+id: 7993251489 //Receptionist
 * Manager:  id: 8695647822
 
 # O que gostaria de implementar
