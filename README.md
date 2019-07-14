@@ -26,3 +26,5 @@ A base de dados já tem alguns exemplos inseridos para o uso da aplicação. Ex:
 De momento a aplicação só permite a gestão de um hotel, mas facilmente esta é alterada para permitir a inserção de vários, apesar de inicialmente este ter sido o objetivo, a ideia teve de ser mudada devido a deadlines
 Uma melhor interface certamente ia ser outra grande adição.
 Em suma há várias coisas que se podiam implementar, mas visto que tdo isto foi projeto com intuito de apredizagem, considero que tenha sido um sucesso
+
+Mais informações estão contidas no Relatório
